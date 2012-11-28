@@ -10,17 +10,14 @@ We recommend creating a new environment in which phrase is available. Let's call
 
 Start by creating a new configuration file:
 
-    ```yml
     # app/config/config_translation.yml
     imports:
         - { resource: config.yml }
     parameters:
         translator.class: Acme\YourBundle\Translation\PhraseTranslator
-    ``` 
 
 The environment should be accessible in the browser, so we should create a front controller for it:
 
-    ```php
     # web/app_translation.php
     <?php 
 
@@ -31,7 +28,6 @@ The environment should be accessible in the browser, so we should create a front
 
     $kernel = new AppKernel('translation', false);
     $kernel->handle(Request::createFromGlobals())->send();
-    ```
     
 Add the "PhraseTranslator" class to your bundle. It will override the standard translation method to expose the translation keys to phrase.
 
