@@ -16,7 +16,7 @@ Start by creating a new configuration file:
         - { resource: config.yml }
     parameters:
         translator.class: Acme\YourBundle\Translation\PhraseTranslator
-        
+    ``` 
 
 The environment should be accessible in the browser, so we should create a front controller for it:
 
@@ -31,6 +31,7 @@ The environment should be accessible in the browser, so we should create a front
 
     $kernel = new AppKernel('translation', false);
     $kernel->handle(Request::createFromGlobals())->send();
+    ```
     
 Add the "PhraseTranslator" class to your bundle. It will override the standard translation method to expose the translation keys to phrase.
 
