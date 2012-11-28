@@ -52,3 +52,5 @@ Now your application is connected to phrase. You can now start pushing and pulli
 * https://phraseapp.com/
 * https://phraseapp.com/docs
 * https://phraseapp.com/de/docs/installation/symfony2
+
+*The code in this tutorial was originally created by Malte Marx from [marxbeck](http://www.marxbeck.de)*
