@@ -36,14 +36,18 @@ When everything is in place, you need to add the Javascript to your layout:
     # Acme/YourBundle/Resources/views/layout.html.twig
     {% if app.environment == 'translation' %}
     <script>
-        var phrase_auth_token = 'YOUR_AUTH_TOKEN';
-        (function() {
-            var phraseapp = document.createElement('script'); phraseapp.type = 'text/javascript'; phraseapp.async = true;
-            phraseapp.src = ['https://', 'phraseapp.com/assets/phrase/0.1/app.js?', new Date().getTime()].join('');
-            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(phraseapp, s);
-        })();
+    window.PHRASEAPP_CONFIG = {
+        projectId: "YOUR-PROJECT-ID"
+    };
+    (function() {
+        var phraseapp = document.createElement('script'); phraseapp.type = 'text/javascript'; phraseapp.async = true;
+        phraseapp.src = ['https://', 'phraseapp.com/assets/in-context-editor/2.0/app.js?', new Date().getTime()].join('');
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(phraseapp, s);
+    })();
     </script>
     {% endif %}
+    
+You can find your Project-ID in the PhraseApp Translation Center.
 
 Now your application is connected to phrase. You can now start pushing and pulling your translations. [See the documentation for more information](https://phraseapp.com/docs).
 
