@@ -1,12 +1,12 @@
-# phrase for Symfony2
+# PhraseApp In-Context Editor for Symfony2
 
-The Symfony2 adapter for phrase enables you to use the [phrase translation management system](https://phraseapp.com) with your Symfony application.
+The Symfony2 adapter lets you to connect the [PhraseApp In-Context Editor](https://phraseapp.com) to your Symfony2 application.
 
-For more information, read the documentation at [phraseapp.com/docs](https://phraseapp.com/docs).
+For more information, read the [documentation](http://docs.phraseapp.com/guides/in-context-editor).
 
 ## Installation ##
 
-We recommend creating a new environment in which phrase is available. Let's call the new environment "translation":
+We recommend creating a new environment in which the In-Context Editor is available. Let's call the new environment "translation":
 
 Start by creating a new configuration file:
 
@@ -19,7 +19,7 @@ Start by creating a new configuration file:
 The environment should be accessible in the browser, so we should create a front controller for it:
 
     # web/app_translation.php
-    <?php 
+    <?php
 
     require_once __DIR__.'/../app/bootstrap.php.cache';
     require_once __DIR__.'/../app/AppKernel.php';
@@ -28,10 +28,10 @@ The environment should be accessible in the browser, so we should create a front
 
     $kernel = new AppKernel('translation', false);
     $kernel->handle(Request::createFromGlobals())->send();
-    
-Add the "PhraseTranslator" class to your bundle. It will override the standard translation method to expose the translation keys to phrase.
 
-When everything is in place, you need to add the Javascript to your layout:
+Add the "PhraseTranslator" class to your bundle. It will override the standard translation method to expose the translation keys to the In-Context Editor.
+
+When everything is in place, add the JavaScript snippet to your layout:
 
     # Acme/YourBundle/Resources/views/layout.html.twig
     {% if app.environment == 'translation' %}
@@ -46,15 +46,14 @@ When everything is in place, you need to add the Javascript to your layout:
     })();
     </script>
     {% endif %}
-    
+
 You can find your Project-ID in the PhraseApp Translation Center.
 
-Now your application is connected to phrase. You can now start pushing and pulling your translations. [See the documentation for more information](https://phraseapp.com/docs).
+Your application is connected to the In-Context Editor. Reload your application to start the translation process!
 
 ### More Information ###
 
 * https://phraseapp.com/
-* https://phraseapp.com/docs
-* https://phraseapp.com/de/docs/installation/symfony2
+* http://docs.phraseapp.com/
 
 *The code in this tutorial was originally created by Malte Marx from [marxbeck](http://www.marxbeck.de)*
