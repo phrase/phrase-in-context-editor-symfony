@@ -1,8 +1,8 @@
 # PhraseApp In-Context Editor for Symfony2
 
-The Symfony2 adapter lets you to connect the [PhraseApp In-Context Editor](https://phraseapp.com) to your Symfony2 application.
+The Symfony2 adapter lets you to connect the [PhraseApp In-Context Editor](https://phraseapp.com/docs/guides/in-context-editor/) to your Symfony2 application.
 
-For more information, read the [documentation](http://docs.phraseapp.com/guides/in-context-editor).
+For more information, read the [documentation](https://phraseapp.com/docs).
 
 ## Installation ##
 
@@ -54,6 +54,6 @@ Your application is connected to the In-Context Editor. Reload your application 
 ### More Information ###
 
 * https://phraseapp.com/
-* http://docs.phraseapp.com/
+* https://phraseapp.com/docs
 
 *The code in this tutorial was originally created by Malte Marx from [marxbeck](http://www.marxbeck.de)*
