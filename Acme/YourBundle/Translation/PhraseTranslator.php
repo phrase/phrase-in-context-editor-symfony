@@ -24,7 +24,7 @@ class PhraseTranslator extends BaseTranslator
     }
 
     /**
-     * Converts the Id to a PhraseApp-compatible Id
+     * Converts the Id to a Phrase-compatible Id
      * Skips the `routes` domain as per documentation
      *
      * @param int $id
