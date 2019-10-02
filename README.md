@@ -1,8 +1,8 @@
-# PhraseApp In-Context Editor for Symfony2
+# Phrase In-Context Editor for Symfony2
 
-The Symfony2 adapter lets you to connect the [PhraseApp In-Context Editor](https://help.phraseapp.com/translate-website-and-app-content/use-in-context-editor-to-translate/translate-directly-on-your-website) to your Symfony2 application.
+The Symfony2 adapter lets you to connect the [Phrase In-Context Editor](https://help.phrase.com/translate-website-and-app-content/use-in-context-editor-to-translate/translate-directly-on-your-website) to your Symfony2 application.
 
-For more information, read the [documentation](https://help.phraseapp.com/).
+For more information, read the [documentation](https://help.phrase.com/).
 
 ## Installation ##
 
@@ -41,19 +41,19 @@ When everything is in place, add the JavaScript snippet to your layout:
     };
     (function() {
         var phraseapp = document.createElement('script'); phraseapp.type = 'text/javascript'; phraseapp.async = true;
-        phraseapp.src = ['https://', 'phraseapp.com/assets/in-context-editor/2.0/app.js?', new Date().getTime()].join('');
+        phraseapp.src = ['https://', 'phrase.com/assets/in-context-editor/2.0/app.js?', new Date().getTime()].join('');
         var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(phraseapp, s);
     })();
     </script>
     {% endif %}
 
-You can find your Project-ID in the PhraseApp Translation Center.
+You can find your Project-ID in the Phrase Translation Center.
 
 Your application is connected to the In-Context Editor. Reload your application to start the translation process!
 
 ### More Information ###
 
-* https://phraseapp.com/
-* https://help.phraseapp.com/
+* https://phrase.com/
+* https://help.phrase.com/
 
 *The code in this tutorial was originally created by Malte Marx from [marxbeck](http://www.marxbeck.de)*
