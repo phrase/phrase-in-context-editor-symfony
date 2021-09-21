@@ -57,3 +57,7 @@ Your application is connected to the In-Context Editor. Reload your application 
 * https://help.phrase.com/
 
 *The code in this tutorial was originally created by Malte Marx from [marxbeck](http://www.marxbeck.de)*
+
+## Get help / support
+
+Please contact [support@phrase.com](mailto:support@phrase.com?subject=[GitHub]%20) and we can take more direct action toward finding a solution.
