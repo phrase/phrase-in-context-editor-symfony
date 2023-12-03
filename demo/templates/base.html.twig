@@ -8,6 +8,21 @@
         {% endblock %}
 
         {% block javascripts %}
+            <script>
+                window.PHRASEAPP_CONFIG = {
+                    accountId: '0bed59e5',
+                    projectId: '00000000000000004158e0858d2fa45c',
+                    datacenter: 'eu',
+                    origin: 'phrase-symfony',
+                };
+                (function() {
+                    var phrasejs = document.createElement('script');
+                    phrasejs.type = 'module';
+                    phrasejs.async = true;
+                    phrasejs.src = 'https://d2bgdldl6xit7z.cloudfront.net/latest/ice/index.js'
+                    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(phrasejs, s);
+                })();
+            </script>
         {% endblock %}
     </head>
     <body>

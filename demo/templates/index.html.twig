@@ -1,0 +1,21 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+    <div>
+        <h1>Symfony with Phrase Strings In-Context Editor</h1>
+        <p>
+            This is a simple demo of a Symfony application integrated with the In-Context Editor.
+            <b>Find me in templates/index.html.twig!</b>
+        </p>
+    </div>
+    <div>
+        <h2>{{ hero_title }}</h2>
+        <p>{{ hero_description }}</p>
+    </div>
+    <div>
+        <h2>{{ 'integrate_title'|trans }}</h2>
+        <p>{{ 'integrate_text'|trans }}</p>
+    </div>
+    <p>{{ 'advantages_text'|trans }}</p>
+    <p>{{ 'create_this_key'|trans }}</p>
+{% endblock %}
