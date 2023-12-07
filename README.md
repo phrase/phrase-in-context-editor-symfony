@@ -1,63 +1,115 @@
-# Phrase In-Context Editor for Symfony2
+# Phrase Strings In-Context Editor for Symfony
 
-The Symfony2 adapter lets you to connect the [Phrase In-Context Editor](https://help.phrase.com/translate-website-and-app-content/use-in-context-editor-to-translate/translate-directly-on-your-website) to your Symfony2 application.
+**phrase-in-context-editor-symfony** is the official adapter for integrating the [Phrase Strings In-Context Editor](https://support.phrase.com/hc/en-us/articles/5784095916188-In-Context-Editor-Strings) with your Symfony application.
 
-For more information, read the [documentation](https://help.phrase.com/).
+## :scroll: Documentation
 
-## Installation ##
+### Prerequisites
 
-We recommend creating a new environment in which the In-Context Editor is available. Let's call the new environment "translation":
+To use the In-Context Editor with your application you have to:
 
-Start by creating a new configuration file:
+* Sign up for a Phrase account: [https://app.phrase.com/signup](https://app.phrase.com/signup)
+* Use the [Symfony](https://symfony.com/) framework for PHP
 
-    # app/config/config_translation.yml
-    imports:
-        - { resource: config.yml }
-    parameters:
-        translator.class: Acme\YourBundle\Translation\PhraseTranslator
+**Note:** Version 2.0.0 supports Symfony 5 and up, along with a new version of the ICE. If you are using Symfony 2, 3, 4, please [check out to version 1.0.0 and follow the README there](https://github.com/phrase/phrase-in-context-editor-symfony/blob/v1.0.0/README.md).
 
-The environment should be accessible in the browser, so we should create a front controller for it:
+### Demo
 
-    # web/app_translation.php
-    <?php
+You can find a demo project in the `demo` folder, just follow [the README.md in that folder](https://github.com/phrase/phrase-in-context-editor-symfony/tree/master/demo) to start up the app and try out the In-Context Editor for Symfony. Feel free to check out the sample code too!
 
-    require_once __DIR__.'/../app/bootstrap.php.cache';
-    require_once __DIR__.'/../app/AppKernel.php';
+### Installation
 
-    use Symfony\Component\HttpFoundation\Request;
+Follow these steps to integrate the In-Context Editor with your Symfony application.
 
-    $kernel = new AppKernel('translation', false);
-    $kernel->handle(Request::createFromGlobals())->send();
+1. Copy `PhraseStringsInContextEditor` and its contents from this repository into your repository's `/src/Service` folder or wherever you would like to place it. Make sure to adjust the namespace accordingly if you decide to place it somewhere else.
 
-Add the "PhraseTranslator" class to your bundle. It will override the standard translation method to expose the translation keys to the In-Context Editor.
+2. Adjust `config/services.yaml` to decorate the `translator` service with our adapter:
+   ```yaml
+   services:
+       ...
+       App\Service\PhraseStringsInContextEditor\Translator:
+           decorates: translator
+   ```
 
-When everything is in place, add the JavaScript snippet to your layout:
+3. Add this JavaScript snippet to your base or layout Twig template between the `{% block javascripts %}` so the In-Context Editor can read the webpage:
+   ```js
+   <script>
+       window.PHRASEAPP_CONFIG = {
+           accountId: '0bed59e5',
+           projectId: '00000000000000004158e0858d2fa45c',
+           datacenter: 'eu',
+           origin: 'phrase-symfony',
+       };
+       (function() {
+           var phrasejs = document.createElement('script');
+           phrasejs.type = 'module';
+           phrasejs.async = true;
+           phrasejs.src = 'https://d2bgdldl6xit7z.cloudfront.net/latest/ice/index.js'
+           var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(phrasejs, s);
+       })();
+   </script>
+   ```
 
-    # Acme/YourBundle/Resources/views/layout.html.twig
-    {% if app.environment == 'translation' %}
-    <script>
-    window.PHRASEAPP_CONFIG = {
-        projectId: "YOUR-PROJECT-ID"
-    };
-    (function() {
-        var phraseapp = document.createElement('script'); phraseapp.type = 'text/javascript'; phraseapp.async = true;
-        phraseapp.src = ['https://', 'phrase.com/assets/in-context-editor/2.0/app.js?', new Date().getTime()].join('');
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(phraseapp, s);
-    })();
-    </script>
-    {% endif %}
+    You can find your Project-ID and Account-ID in the Phrase Translation Center.
 
-You can find your Project-ID in the Phrase Translation Center.
+4. Your application is now connected to the In-Context Editor. Reload your application and login with your Phrase credentials to start the translation process directly on your webpage!
 
-Your application is connected to the In-Context Editor. Reload your application to start the translation process!
+### Development
 
-### More Information ###
+#### Translate in Symfony with ICE
+As our adapter is now decorating the translator service, you wTranslate as you would normally would in Symfony:
 
-* https://phrase.com/
-* https://help.phrase.com/
+1. Through the `translator` service's `trans` method, e.g. translating from inside a controller:
+   ```php
+   $translated = $translate->trans('key_name');
+   ```
 
-*The code in this tutorial was originally created by Malte Marx from [marxbeck](http://www.marxbeck.de)*
+2. Through the `trans` filter in a twig template:
+   ```
+   {{ 'key_name'|trans }}
+   ```
 
-## Get help / support
+See [Symfony docs on translations](https://symfony.com/doc/current/translation.html) for more details on how to handle translations.
 
-Please contact [support@phrase.com](mailto:support@phrase.com?subject=[GitHub]%20) and we can take more direct action toward finding a solution.
+#### Using the old version of ICE
+ To use the old version of ICE, add the option `useOldICE: true` to your config in the JavaScript snippet:
+ ```js
+ window.PHRASEAPP_CONFIG = {
+    accountId: '0bed59e5',
+    projectId: '00000000000000004158e0858d2fa45c',
+    datacenter: 'eu',
+    origin: 'phrase-symfony',
+    useOldICE: true,
+ };
+ ```
+
+#### Using the US Datacenter with ICE
+In addition to the settings in your config, set the US datacenter to enable it working with the US endpoints.
+```js
+    datacenter: 'us',
+```
+
+#### Setting the ICE for a Different Environment
+If you want the ICE running on a different environment instead of `dev`, change the env on Line 12 in the Translator file:
+```php
+# PhraseStringsInContextEditor\Translator.php
+
+#[When(env: 'dev')]
+```
+
+## :white_check_mark: Commits & Pull Requests
+
+We welcome anyone who wants to contribute to our codebase, so if you notice something, feel free to open a Pull Request! However, we ask that you please use the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) specification for your commit messages and titles when opening a Pull Request.
+
+Example: `chore: Update README`
+
+## :question: Issues, Questions, Support
+
+Please use [GitHub issues](https://github.com/phrase/Flask-Phrase/issues) to share your problem, and we will do our best to answer any questions or to support you in finding a solution.
+
+## :books: Resources
+
+* [Installing & Setting Up the Symfony Framework](https://symfony.com/doc/current/setup.html)
+* [Localization Guides and Software Translation Best Practices](http://phrase.com/blog/)
+* [Phrase Help Center](https://support.phrase.com/)
+* [Contact Phrase Team](https://phrase.com/contact)
