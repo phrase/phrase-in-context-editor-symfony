@@ -1,6 +1,6 @@
 # Phrase Strings In-Context Editor for Symfony
 
-**phrase-symfony** is the official adapter for integrating the [Phrase Strings In-Context Editor](https://support.phrase.com/hc/en-us/articles/5784095916188-In-Context-Editor-Strings) with your Symfony application.
+**phrase-in-context-editor-symfony** is the official adapter for integrating the [Phrase Strings In-Context Editor](https://support.phrase.com/hc/en-us/articles/5784095916188-In-Context-Editor-Strings) with your Symfony application.
 
 ## :scroll: Documentation
 
@@ -11,11 +11,11 @@ To use the In-Context Editor with your application you have to:
 * Sign up for a Phrase account: [https://app.phrase.com/signup](https://app.phrase.com/signup)
 * Use the [Symfony](https://symfony.com/) framework for PHP
 
-**Note:** Version 2.0.0 supports Symfony 5 and up, along with a new version of the ICE. If you are using Symfony 2, 3, 4 or would rather use the old version of the ICE, please check out to version 1.0.0 and follow the README.
+**Note:** Version 2.0.0 supports Symfony 5 and up, along with a new version of the ICE. If you are using Symfony 2, 3, 4, please [check out to version 1.0.0 and follow the README there](https://github.com/phrase/phrase-in-context-editor-symfony/blob/v1.0.0/README.md).
 
 ### Demo
 
-You can find a demo project in the `demo` folder, just follow [the README.md in that folder](https://github.com/phrase/phrase-symfony2/tree/master/demo) to try out the In-Context Editor for Symfony. Feel free to check out the code!
+You can find a demo project in the `demo` folder, just follow [the README.md in that folder](https://github.com/phrase/phrase-in-context-editor-symfony/tree/master/demo) to start up the app and try out the In-Context Editor for Symfony. Feel free to check out the sample code too!
 
 ### Installation
 
@@ -57,7 +57,7 @@ Follow these steps to integrate the In-Context Editor with your Symfony applicat
 ### Development
 
 #### Translate in Symfony with ICE
-Translate as you would normally would in Symfony:
+As our adapter is now decorating the translator service, you wTranslate as you would normally would in Symfony:
 
 1. Through the `translator` service's `trans` method, e.g. translating from inside a controller:
    ```php
@@ -69,11 +69,11 @@ Translate as you would normally would in Symfony:
    {{ 'key_name'|trans }}
    ```
 
-See [Symfony docs on translations](https://symfony.com/doc/current/translation.html) for more details.
+See [Symfony docs on translations](https://symfony.com/doc/current/translation.html) for more details on how to handle translations.
 
 #### Using the old version of ICE
  To use the old version of ICE, add the option `useOldICE: true` to your config in the JavaScript snippet:
- ```
+ ```js
  window.PHRASEAPP_CONFIG = {
     accountId: '0bed59e5',
     projectId: '00000000000000004158e0858d2fa45c',
@@ -85,13 +85,13 @@ See [Symfony docs on translations](https://symfony.com/doc/current/translation.h
 
 #### Using the US Datacenter with ICE
 In addition to the settings in your config, set the US datacenter to enable it working with the US endpoints.
-```
+```js
     datacenter: 'us',
 ```
 
 #### Setting the ICE for a Different Environment
 If you want the ICE running on a different environment instead of `dev`, change the env on Line 12 in the Translator file:
-```
+```php
 # PhraseStringsInContextEditor\Translator.php
 
 #[When(env: 'dev')]
