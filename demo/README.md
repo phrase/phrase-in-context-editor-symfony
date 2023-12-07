@@ -25,8 +25,12 @@ See [Symfony docs re: technical requirements](https://symfony.com/doc/current/se
     symfony server:start
    ```
 
-4. Go to [http://localhost:8000](http://localhost:8000) and start playing around with the In-Context Editor to translate directly on the webpage!
+4. Go to [http://localhost:8000](http://localhost:8000) to see the application
+   
+5. As this demo app is using the Phrase demo account and project under the hood, login using the following credentials:
+   ```
+   E-Mail: demo@phrase.com
+   Password: phrase
+   ```
 
-
-
-
+6. Start playing around with the In-Context Editor to translate directly on the webpage!
