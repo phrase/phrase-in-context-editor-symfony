@@ -44,7 +44,7 @@ Follow these steps to integrate the In-Context Editor with your Symfony applicat
            var phrasejs = document.createElement('script');
            phrasejs.type = 'module';
            phrasejs.async = true;
-           phrasejs.src = 'https://d2bgdldl6xit7z.cloudfront.net/latest/ice/index.js'
+           phrasejs.src = 'https://cdn.phrase.com/strings/plugins/editor/latest/ice/index.js'
            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(phrasejs, s);
        })();
    </script>
