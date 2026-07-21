@@ -27,10 +27,16 @@ See [Symfony docs re: technical requirements](https://symfony.com/doc/current/se
 
 4. Go to [http://localhost:8000](http://localhost:8000) to see the application
    
-5. As this demo app is using the Phrase demo account and project under the hood, login using the following credentials:
-   ```
-   E-Mail: demo@phrase.com
-   Password: phrase
-   ```
+5. Login using your trial account.
 
 6. Start playing around with the In-Context Editor to translate directly on the webpage!
+
+### Set up with your Phrase trial account
+
+This demo requires a [Phrase](https://phrase.com) trial account. To use this demo:
+
+1. Sign up for a free trial at [https://eu.phrase.com/](https://eu.phrase.com/)
+2. After creating your trial account, note your **Account ID** and **Project ID**
+3. Update the `projectId` and `accountId` values in the demo configuration to match your trial account credentials
+
+These IDs can be found in your Phrase account settings after you've created a project.
